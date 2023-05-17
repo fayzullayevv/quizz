@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Sign Up</title>
+
+<style>
+
+  .signup-box {
+    width: 360px;
+    height: 620px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  .login-box {
+    width: 360px;
+    height: 280px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: white;
+  }
+
+  h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  form {
+    width: 300px;
+    margin-left: 20px;
+  }
+
+  form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+
+  input[type="submit"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
+
+  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="signup-box">
+  <h1>Sign Up</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label>User Name</label>
+    {{form.username}}
+
+    <label>Password</label>
+    {{form.password1}}
+
+    <label>Confirm Password</label>
+    {{form.password2}}
+    <input type="submit" value="Submit" />
+  </form>
+  <p>
+    Already have an account? <a href="{% url 'login' %}">Login here</a>
+  </p>
+</div>
+{% endblock content %}
